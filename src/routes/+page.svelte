@@ -13,7 +13,7 @@
 	let initialPageIndex=0;
 
 
-	const showAllHandler = (image_url?:string)=>{
+	const openImageGridModal = (image_url?:string)=>{
 		if(image_url && typeof image_url=='string'){
 			focus_image_url=image_url;
 		}
@@ -25,7 +25,7 @@
 
 <div class="h-inherit w-full max-w-[1130px] md:p-4 mx-auto">
 	<div class="block md:hidden h-auto relative">
-		<Carousel {showAllHandler} bind:currentPageIndex {initialPageIndex} images={property.images} />
+		<Carousel {openImageGridModal} bind:currentPageIndex {initialPageIndex} images={property.images} />
 
 		<span class="page-number">
 			{currentPageIndex+1} / {property.images.length}
@@ -37,20 +37,20 @@
 	<div class="relative hidden md:flex w-full h-auto gap-2 ">
 
 		<div class="absolute bottom-5 right-5 z-10">
-			<Button color="light" size="xs" on:click={()=>showAllHandler()}>
+			<Button color="light" size="xs" on:click={()=>openImageGridModal()}>
 				<span class="pr-1"><GridIcon/> </span>
 				<span>Show all photos</span>
 			</Button>
 		</div>
 
 
-		<button on:click={()=>showAllHandler()} class="image-wrapper w-1/2 h-full">
+		<button on:click={()=>openImageGridModal()} class="image-wrapper w-1/2 h-full">
 			<img class=" object-cover aspect-square rounded-l-lg" src="{property?.images[0]?.image_url}" alt="">
 		</button>
 
 		<div class="images-container ">
 			{#each property.images.filter((_,i)=>i<=5 && i>1) as item}	
-				<button on:click={()=>showAllHandler(item.image_url)} class="image-wrapper ">
+				<button on:click={()=>openImageGridModal(item.image_url)} class="image-wrapper ">
 					<img class="object-cover aspect-square" src="{item?.image_url}" alt="{item?.tags}">
 				</button>
 			{/each}

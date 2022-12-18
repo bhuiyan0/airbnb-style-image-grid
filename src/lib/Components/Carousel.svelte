@@ -5,7 +5,7 @@
 	export let images:any;
 	export let currentPageIndex:number;
 	export let initialPageIndex:number;
-	export let showAllHandler:any;
+	export let openImageGridModal:any;
 
 	let Carousel:any;
 	
@@ -23,7 +23,7 @@
 	on:pageChange={event=> {currentPageIndex = event.detail} }>
 
   {#each images as image}
-		<button on:click={()=>showAllHandler(image.image_url)} class="image-wrapper">
+		<button on:click={()=>openImageGridModal(image.image_url)} class="image-wrapper">
 			<img  src="{image.image_url}" alt="hello">
 		</button>
 	{/each}
