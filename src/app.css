@@ -1,0 +1,15 @@
+html,body{
+	@apply h-screen w-screen overflow-hidden;
+}
+
+*::-webkit-scrollbar {
+  @apply w-2 ;
+}
+ 
+*::-webkit-scrollbar-track {
+  @apply shadow-lg ;
+}
+ 
+*::-webkit-scrollbar-thumb {
+	@apply bg-slate-500 outline-none rounded-md;
+}
